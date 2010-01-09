@@ -1,5 +1,9 @@
-pyth :: Int -> [(Int, Int)]
-pyth lim = q [ (a, b) | a <- [ 1 .. lim - 1 ], b <- [ 2 .. lim ] ]
+triangles :: [[Int]]
+triangles = [ [a, b, (c a b)] | a <- [ 1 .. 400], b <- [ 2 .. 401 ]
+	, a < b
+	, ((c a b) ^ 2) == (a * a) + (b * b)
+	]
 	where
-	q ((a, b):xs) = [ (a', b') | a' <- a, b' <- b, a < b]
-	square a = (\x -> x - fromInteger (floor x)) (sqrt a) == 0.0
+	c x y = (fromEnum $ sqrt $ fromIntegral ((x * x) + (y * y)))
+
+product (filter (\x -> (sum x) == 1000) triangles !! 0)
