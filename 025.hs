@@ -1,12 +1,13 @@
-fibs :: [ Double ]
-fibs = 0.0 : 1.0 : zipWith (+) fibs (tail fibs)
+import List
+import Maybe
+
+fibs :: [ Integer ]
+fibs = 1 : 1 : zipWith (+) fibs (tail fibs)
 
 -- Length of a number n is, floor $ log 10 n + 1
+len :: (Show a) => a -> Int
+len x = length $ show x
 
-len :: (Floating a, RealFrac a, Integral b) => a -> b
-len x = (fromIntegral $ floor $ logBase 10 x) + 1
-
---f :: (Enum a, Floating a, RealFrac a, Num b, Integral b) => [ a ] -> [ b ]
---f xs = [ len x | x <- xs ]
-
-filter (\x -> len x == 1000) fibs
+e25 = (fromJust $ elemIndex q fibs) + 1
+	where
+	q = (head $ filter (\x -> len x == 1000) fibs)
