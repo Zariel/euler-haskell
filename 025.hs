@@ -10,4 +10,4 @@ len x = length $ show x
 
 e25 = (fromJust $ elemIndex q fibs) + 1
 	where
-	q = (head $ filter (\x -> len x == 1000) fibs)
+	q = head $ filter (\x -> len x == 1000) fibs
